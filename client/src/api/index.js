@@ -5,7 +5,7 @@ const heroku = 'https://memories-app-server-0a77c8fedce2.herokuapp.com';
 
 //backend url
 const API = axios.create({
-    baseURL: heroku,
+    baseURL: local,
 });
 
 // const API = axios.create({ baseURL: 'http://localhost:5000' })
