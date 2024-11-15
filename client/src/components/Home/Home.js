@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Container, Grow, Grid, Paper, AppBar, TextField, Button} from "@material-ui/core";
 import {useDispatch} from 'react-redux';
 import {useNavigate, useLocation} from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
+// import ChipInput from "material-ui-chip-input";
 
 import { getPosts, getPostsBySearch } from '../../actions/posts.js'
 import Pagination from "../Pagination"
@@ -64,14 +64,14 @@ const Home = () => {
                                        onChange={(e) => {
                                            setSearch(e.target.value);
                                        }}/>
-                            <ChipInput
-                                style={{ margin: '10px 0' }}
-                                value={tags}
-                                onAdd={handleAdd}
-                                onDelete={handleDelete}
-                                label="Tìm theo tags"
-                                variant="outlined"
-                            />
+                            {/*<ChipInput*/}
+                            {/*    style={{ margin: '10px 0' }}*/}
+                            {/*    value={tags}*/}
+                            {/*    onAdd={handleAdd}*/}
+                            {/*    onDelete={handleDelete}*/}
+                            {/*    label="Tìm theo tags"*/}
+                            {/*    variant="outlined"*/}
+                            {/*/>*/}
 
                             <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">
                                 Tìm kiếm
