@@ -10,7 +10,8 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { useDispatch } from "react-redux";
 import jwt_decode from 'jwt-decode'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useStyles from "./styles";
 import Input from "./Input";
@@ -25,7 +26,7 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState()
   const dispatch = useDispatch();
-  const history = useHistory()
+  const navigate = useNavigate();
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -35,9 +36,9 @@ const Auth = () => {
 
     console.log(formData); // In ra formData để kiểm tra
     if(isSignUp) {
-      dispatch(signup(formData, history))
+      dispatch(signup(formData, navigate)) // Dùng navigate thay cho history
     } else {
-      dispatch(signin(formData, history))
+      dispatch(signin(formData, navigate)) // Dùng navigate thay cho history
     }
   };
 
@@ -75,7 +76,7 @@ const Auth = () => {
 
       dispatch({ type: 'AUTH', data: { result: userData, token: response.credential } });
 
-      history.push('/')
+      navigate('/'); // Dùng navigate thay cho history.push
     } catch (error) {
       console.log(error);
     }

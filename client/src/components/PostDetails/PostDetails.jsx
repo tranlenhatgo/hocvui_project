@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Paper, Typography, CircularProgress, Divider } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import useStyles from "./styles";
 import {getPost, getPostsBySearch} from "../../actions/posts";
@@ -11,7 +11,7 @@ import CommentSection from "./CommentSection";
 const PostDetails = () => {
     const { post, posts, isLoading } = useSelector((state) => state.posts);
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const classes = useStyles();
     const { id } = useParams();
 
@@ -35,7 +35,7 @@ const PostDetails = () => {
 
     const recommendedPosts = posts.filter(({ _id }) => _id !== post._id)
 
-    const openPost = (_id) => history.push(`/posts/${_id}`)
+    const openPost = (_id) => navigate(`/posts/${_id}`)
 
     //POSTS/123
 

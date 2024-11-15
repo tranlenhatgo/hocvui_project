@@ -14,7 +14,7 @@ import moment from "moment";
 import {useDispatch} from "react-redux";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useStyle from "./styles.js";
 import {deletePost, likePost} from "../../../actions/posts.js";
@@ -22,7 +22,7 @@ import {deletePost, likePost} from "../../../actions/posts.js";
 const Post = ({post, setCurrentId}) => {
     const classes = useStyle();
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("profile"));
     const [likes, setLikes] = useState(post?.likes)
 
@@ -78,7 +78,7 @@ const Post = ({post, setCurrentId}) => {
         );
     };
 
-    const openPost = () => history.push(`/posts/${post._id}`)
+    const openPost = () => navigate(`/posts/${post._id}`)
 
     return (
         <Card className={classes.card} raised elevation={6}>

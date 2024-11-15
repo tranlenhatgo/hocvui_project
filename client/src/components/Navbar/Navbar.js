@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import decode from 'jwt-decode'
 
@@ -11,13 +11,13 @@ const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
   const location = useLocation()
 
   const logout = () => {
     dispatch({ type: 'LOGOUT' })
 
-    history.push('/') 
+    navigate('/')
 
     setUser(null)
   }
